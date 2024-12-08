@@ -1,20 +1,24 @@
-const express = require('express')
-const morgan = require('morgan')
+const express = require("express");
+const morgan = require("morgan");
 
-const app = express()
+const app = express();
+app.use(express.static("public"));
 
-app.use(morgan('dev'))
+app.set("views", "./views");
+app.set("view engine", "ejs");
 
-app.get('/', (req,res)=>{
-    res.send('Hello from Node.js')
-})
+app.use(morgan("dev"));
 
-const PORT = 3000
+app.get("/", (req, res) => {
+  res.render("index", { message: "Hello from Node.js" });
+});
 
-app.listen(PORT,()=>{
-    console.log(`Server running on port ${PORT}`)
-})
+const PORT = 3000;
 
-app.get('*',(req,res)=>{
-    res.status(404).send('Not found')
-})
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+app.get("*", (req, res) => {
+  res.status(404).render("index", { message: "Not found" });
+});
