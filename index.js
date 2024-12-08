@@ -1,6 +1,8 @@
 const express = require("express");
 const morgan = require("morgan");
 
+require("dotenv").config();
+require("./libs/dbConnect");
 const app = express();
 app.use(express.static("public"));
 
@@ -10,7 +12,7 @@ app.set("view engine", "ejs");
 app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
-  res.render("index", { message: "Hello from Node.js" });
+  res.render("index", { message: "Hellooo from Node.js" });
 });
 
 const PORT = 3000;
