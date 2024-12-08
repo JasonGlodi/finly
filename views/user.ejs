@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head')%>
+    <link rel="stylesheet" href="/styles/output.css" />
+  </head>
+  <body>
+    <h1 class="text-emerald-500"><%=message%></h1>
+    <% if (user){%>
+    <p><%=user.email%></p>
+    <p><%=user.password%></p>
+    <%}%>
+  </body>
+</html>
